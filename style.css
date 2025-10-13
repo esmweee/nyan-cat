@@ -1,12 +1,73 @@
-html, body {
+body {
 margin: 0;
-padding: 0;
-overflow: hidden;  /* basically just hides the scrollbars they bother me sm*/
+font-family: Arial, sans-serif;
+text-align: center;
+background: linear-gradient(135deg, #fea9d3, #ff7fbf);
+color: white;
+
+};
+
+#start-screen {
+display: flex;
+flex-direction: column; 
+align-items: center;
+height: 100vh;
+}
+
+#start-button {
+background-color: #fea9d3;
+border: none;
+padding: 15px 30px;
+font-size: 18px;
+border-radius: 8px;
+cursor: pointer;
+margin-top: 20px;
 
 }
 
-canvas {
-display: block; /*gets rid of more space under the canvas*/
-width: 100%;
-height: 100%;
+#start-button:hover {
+background-color: #fea9d3;
+
 }
+
+#game-container {
+display: none;
+}
+
+/*game over screen*/
+
+#game-over-screen {
+display: none;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+/* restart button*/
+#restart-button {
+background-color: #ffb6c1;
+border: none;
+padding: 15px 30px;
+font-size: 18px;
+border-radius: 8px;
+cursor: pointer;
+margin-top: 20px;
+color: #333;
+
+}
+
+/* color for when u hover over the restart button*/
+
+#restart-button:hover {
+background-color: #ff9eb5;
+}
+
+
+
+
+// blalal
+const PALETS = {
+bgTop: ("#ff4fbb");
+bgBottom: ("#ff4ffb");
+height: 23'
