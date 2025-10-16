@@ -6,3 +6,18 @@ let lift = -12;
 let score = 0;
 let gameOver = false;
 let characterImg, objectImg, backgroundImg;
+
+// preload everything
+function preload() {
+
+characterImg = loadImage("assets/nyancatcher.gif");
+objectImg = loadImage("assets/poptart.png");
+backgroundImg = loadImage("assets/")
+
+
+
+
+
+
+
+}
