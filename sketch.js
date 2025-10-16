@@ -12,12 +12,6 @@ function preload() {
 
 characterImg = loadImage("assets/nyancatcher.gif");
 objectImg = loadImage("assets/poptart.png");
-backgroundImg = loadImage("assets/")
-
-
-
-
-
-
+backgroundImg = loadImage("assets/nyanbackground.png");
 
 }
