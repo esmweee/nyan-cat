@@ -56,7 +56,15 @@ function runGame() {
 nyanCat.velocity += gravity;
 nyanCat.y += nyanCat.velocity;
 
-//
+//keep the player on screeen
+if (nyanCat.y > height) {
+gameOver = true;
+}
+if (nyanCat.y < 0) {
+nyanCat.y = 0;
+nyanCat.velocity = 0;
+
+}
 
 
 }
