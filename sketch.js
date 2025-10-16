@@ -33,6 +33,9 @@ this.velocity = lift;
 }
 };
 
+// generate incoming objects
+setInterval(generateObject, 1500);
+}
 
 
 }
