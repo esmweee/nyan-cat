@@ -15,3 +15,10 @@ objectImg = loadImage("assets/poptart.png");
 backgroundImg = loadImage("assets/nyanbackground.png");
 
 }
+
+// setup (basically create canvas etc)
+function setup() {
+createCanvas(800, 600);
+
+
+}
