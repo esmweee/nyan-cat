@@ -49,6 +49,18 @@ drawGameOver();
 }
 }
 
+// run the game
+function runGame() {
+
+// add gravity
+nyanCat.velocity += gravity;
+nyanCat.y += nyanCat.velocity;
+
+//
+
+
+}
+
 }
 
 
