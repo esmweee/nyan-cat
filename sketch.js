@@ -37,6 +37,17 @@ this.velocity = lift;
 setInterval(generateObject, 1500);
 }
 
+// draw loop
+function draw() {
+backgroundImg(backgroundImg);
+
+// game over condition 
+if(!gameOver) {
+runGame();
+} else {
+drawGameOver();
+}
+}
 
 }
 
