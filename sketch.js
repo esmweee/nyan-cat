@@ -66,6 +66,13 @@ nyanCat.velocity = 0;
 
 }
 
+// draw player
+image(nyanCatImg, nyanCat.x, nyanCat.y, nyanCat.width, nyanCat.height);
+
+// objects
+updateObject();
+checkCollisions()
+
 
 }
 
