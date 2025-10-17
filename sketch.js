@@ -25,7 +25,7 @@ createCanvas(800, 600);
 nyanCat = {
 x: 100,
 y: height / 2,
-velocity: 0;
+velocity: 0,
 width: 80,
 height: 60,
 jump: function() {
@@ -84,7 +84,7 @@ function generateObject() {
 if (!gameOver)  {
 treats.push({
 x: width,
-y: random(100, height - 100);
+y: random(100, height - 100),
 width: 40,
 height: 40,
 speed: random(2, 5)
@@ -113,9 +113,17 @@ if (isColliding(nyanCat, object[i])) {
 score++
 object.splice(i, 1);
 
+}
+}
+}
 
-}
-}
+function isColliding(nyanCat, object) {
+return nyanCat.x < object.x + object.width &&
+nyanCat.x + nyanCat.width > object.x &&
+nyanCat.y < object.y + object.height &&
+nyanCat.y + nyanCat.height > object.y;
+nyanCat.y + nyanCat.height > object.y;
+
 }
 
 
