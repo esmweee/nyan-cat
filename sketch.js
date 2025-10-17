@@ -142,7 +142,16 @@ nyanCat.jump();
 }
 }
 
+// reset game
+function resetGame() {
+nyanCat.y = height / 2;
+nyanCat.velocity = 0;
+object = [];
+score = 0;
+gameOver = false;
+}
 
+function drawGameOver() {}
 
 
 
