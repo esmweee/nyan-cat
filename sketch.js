@@ -79,6 +79,19 @@ textSize(32);
 text("Pop tarts: " + score, 20, 40);
 }
 
+// generate objects 
+function generateObject() {
+if (!gameOver)  {
+treats.push({
+x: width,
+y: random(100, height - 100);
+width: 40,
+height: 40,
+speed: random(2, 5)
+});
+}
+}
+
 
 
 
