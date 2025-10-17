@@ -135,6 +135,16 @@ resetGame();
 }
 }
 
+// check for keys pressing
+function keyPressed() {
+if (key === ' ' && !gameOver) {
+nyanCat.jump();
+}
+}
+
+
+
+
 
 
 
