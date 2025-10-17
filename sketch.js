@@ -127,7 +127,7 @@ nyanCat.y + nyanCat.height > object.y;
 }
 
 // check for mouse presing
-function mousePressed() {}
+function mousePressed() {
 if (!gameOver) {
 nyanCat.jump();
 } else {
@@ -151,7 +151,16 @@ score = 0;
 gameOver = false;
 }
 
-function drawGameOver() {}
+function drawGameOver() {
+fill(255);
+textSize(40);
+textAlign(CENTER, CENTER);
+text("Game Over. Restart? ^_^", width / 2, height / 2 - 50);
+textSize(24);
+text("Pop Tarts: " + score, width / 2, height / 2);
+text("Click here to restart", width / 2, height / 2 + 50);
+textAlign(LEFT, TOP); 
+}
 
 
 
