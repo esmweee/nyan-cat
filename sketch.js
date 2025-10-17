@@ -73,10 +73,16 @@ image(nyanCatImg, nyanCat.x, nyanCat.y, nyanCat.width, nyanCat.height);
 updateObject();
 checkCollisions()
 
-
+// draw score
+fill(255);
+textSize(32);
+text("Pop tarts: " + score, 20, 40);
 }
 
-}
+
+
+
+
 
 
 
