@@ -99,8 +99,11 @@ object[i].x -= object[i].speed;
 // draw object
 image(objectImg, object[i].x, object[i].y, object[i].width, object[i].height);
 
-
-
+// remove objects that arent gathered
+if (object[i].x < -50) {
+object.splice(i, 1);
+}
+}
 }
 
 
