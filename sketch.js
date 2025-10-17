@@ -1,6 +1,6 @@
 // variables
 let nyanCat;
-let object = [];
+let objects = [];
 let gravity = 0.6;
 let lift = -12; 
 let score = 0;
@@ -161,12 +161,3 @@ text("Pop Tarts: " + score, width / 2, height / 2);
 text("Click here to restart", width / 2, height / 2 + 50);
 textAlign(LEFT, TOP); 
 }
-
-
-
-
-
-
-
-
-
