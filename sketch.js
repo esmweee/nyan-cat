@@ -126,6 +126,17 @@ nyanCat.y + nyanCat.height > object.y;
 
 }
 
+// check for mouse presing
+function mousePressed() {}
+if (!gameOver) {
+nyanCat.jump();
+} else {
+resetGame();
+}
+}
+
+
+
 
 
 
