@@ -106,6 +106,18 @@ object.splice(i, 1);
 }
 }
 
+// check for collision
+function checkCollisions() {
+for (let i = treats.length - 1; i >= 0; i--) {
+if (isColliding(nyanCat, object[i])) {
+score++
+object.splice(i, 1);
+
+
+}
+}
+}
+
 
 
 
