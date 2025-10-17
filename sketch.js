@@ -92,7 +92,16 @@ speed: random(2, 5)
 }
 }
 
+function updateObject() {
+for (let i = object.length - 1; i >= 0; i--) {
+object[i].x -= object[i].speed;
 
+// draw object
+image(objectImg, object[i].x, object[i].y, object[i].width, object[i].height);
+
+
+
+}
 
 
 
