@@ -1,2 +1,105 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nyan Cat</title>
+<style>
+body { margin: 0; padding: 0; background: #1a1a2e; }
+canvas { display: block; margin: 0 auto; }
+</style>
+</head>
+<body>
+<!-- p5.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    
+<!-- game code -->
+<script>
+let nyanCat, objects = [], gravity = 0.6, lift = -12, score = 0, gameOver = false;
+let nyanCatImg, objectImg, backgroundImg;
 
+function preload() {
+nyanCatImg = loadImage("assets/nyancatcher.gif");
+objectImg = loadImage("assets/poptart.png");
+backgroundImg = loadImage("assets/nyanbackground.png");
+}
+
+function setup() {
+createCanvas(800, 600);
+nyanCat = {
+x: 100, y: height / 2, velocity: 0, width: 80, height: 60,
+jump: function() { this.velocity = lift; }
+};
+setInterval(generateObject, 1500);
+}
+
+function draw() {
+background(backgroundImg);
+if(!gameOver) runGame();
+else drawGameOver();
+}
+
+function runGame() {
+nyanCat.velocity += gravity;
+nyanCat.y += nyanCat.velocity;
+if (nyanCat.y > height) gameOver = true;
+if (nyanCat.y < 0) { nyanCat.y = 0; nyanCat.velocity = 0; }
+            
+image(nyanCatImg, nyanCat.x, nyanCat.y, nyanCat.width, nyanCat.height);
+updateObjects();
+checkCollisions();
+            
+fill(255); textSize(32); text("Pop tarts: " + score, 20, 40);
+}
+
+function generateObject() {
+if (!gameOver) objects.push({
+x: width, y: random(100, height-100), width: 40, height: 40, speed: random(2,5)
+});
+}
+
+function updateObjects() {
+for (let i = objects.length - 1; i >= 0; i--) {
+objects[i].x -= objects[i].speed;
+image(objectImg, objects[i].x, objects[i].y, objects[i].width, objects[i].height);
+if (objects[i].x < -50) objects.splice(i, 1);
+}
+}
+
+function checkCollisions() {
+for (let i = objects.length - 1; i >= 0; i--) {
+if (isColliding(nyanCat, objects[i])) {
+score++; objects.splice(i, 1);
+}
+}
+}
+
+function isColliding(nyanCat, obj) {
+return nyanCat.x < obj.x + obj.width && nyanCat.x + nyanCat.width > obj.x &&
+nyanCat.y < obj.y + obj.height && nyanCat.y + nyanCat.height > obj.y;
+}
+
+function mousePressed() {
+if (!gameOver) nyanCat.jump();
+else resetGame();
+}
+
+function keyPressed() {
+if (key === ' ' && !gameOver) nyanCat.jump();
+}
+
+function resetGame() {
+nyanCat.y = height/2; nyanCat.velocity = 0; objects = []; score = 0; gameOver = false;
+ }
+
+function drawGameOver() {
+fill(255); textSize(40); textAlign(CENTER, CENTER);
+text("Game Over!", width/2, height/2-50);
+textSize(24); text("Pop Tarts: " + score, width/2, height/2);
+text("Click to restart", width/2, height/2+50);
+textAlign(LEFT, TOP);
+}
+    </script>
+</body>
+</html>

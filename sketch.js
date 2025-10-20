@@ -1,4 +1,5 @@
 // variables
+treats
 let nyanCat;
 let objects = [];
 let gravity = 0.6;
@@ -82,7 +83,7 @@ text("Pop tarts: " + score, 20, 40);
 // generate objects 
 function generateObject() {
 if (!gameOver)  {
-treats.push({
+objects.push({
 x: width,
 y: random(100, height - 100),
 width: 40,
