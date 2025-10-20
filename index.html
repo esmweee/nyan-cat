@@ -28,7 +28,7 @@ backgroundImg = loadImage("assets/nyanbackground.png");
 function setup() {
 createCanvas(1500, 1000);
 nyanCat = {
-x: -25, y: height / 2, velocity: 0, width: 320, height: 280,
+x: -55, y: height / 2, velocity: 0, width: 420, height: 280,
 jump: function() { this.velocity = lift; }
 };
 setInterval(generateObject, 1500);
@@ -55,7 +55,7 @@ fill(255); textSize(32); text("Pop tarts: " + score, 20, 40);
 
 function generateObject() {
 if (!gameOver) objects.push({
-x: width, y: random(100, height-100), width: 40, height: 40, speed: random(2,5)
+x: width, y: random(100, height-100), width: 80, height: 80, speed: random(5,8)
 });
 }
 
