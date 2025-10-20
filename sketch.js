@@ -19,7 +19,7 @@ backgroundImg = loadImage("assets/nyanbackground.png");
 
 // setup (basically create canvas etc)
 function setup() {
-createCanvas(800, 600);
+createCanvas(5000, 5000);
 
 // character (nyan cat)
 
@@ -27,7 +27,7 @@ nyanCat = {
 x: 100,
 y: height / 2,
 velocity: 0,
-width: 80,
+width: 200,
 height: 60,
 jump: function() {
 this.velocity = lift;
