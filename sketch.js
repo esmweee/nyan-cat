@@ -21,6 +21,8 @@ backgroundImg = loadImage("assets/nyanbackground.png");
 function setup() {
 createCanvas(5000, 5000);
 
+textFont('Pixelify Sans');
+
 // character (nyan cat)
 
 nyanCat = {

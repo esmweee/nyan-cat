@@ -9,6 +9,7 @@
 body { margin: 0; padding: 0; background: #1a1a2e; }
 canvas { display: block; margin: 0 auto; }
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 </head>
 <body>
 <!-- p5.js -->
@@ -27,6 +28,9 @@ backgroundImg = loadImage("assets/nyanbackground.png");
 
 function setup() {
 createCanvas(1500, 1000);
+// load font
+textFont('Pixelify Sans');
+
 nyanCat = {
 x: -155, y: height / 2, velocity: 0, width: 460, height: 300,
 jump: function() { this.velocity = lift; }
@@ -94,11 +98,14 @@ nyanCat.y = height/2; nyanCat.velocity = 0; objects = []; score = 0; gameOver = 
  }
 
 function drawGameOver() {
-fill(255); textSize(40); textAlign(CENTER, CENTER);
+fill(255);
+textSize(40);
+textAlign(CENTER, CENTER);
+
 text("Game Over!", width/2, height/2-100);
 textSize(24); text("Pop Tarts: " + score, width/2, height/2-50);
 text("Click to restart", width/2, height/2-20);
-textAlign(CENTER, CENTER);
+textAlign(LEFT, TOP);
 }
     </script>
 </body>
