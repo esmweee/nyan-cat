@@ -95,10 +95,10 @@ nyanCat.y = height/2; nyanCat.velocity = 0; objects = []; score = 0; gameOver = 
 
 function drawGameOver() {
 fill(255); textSize(40); textAlign(CENTER, CENTER);
-text("Game Over!", width/2, height/2-50);
-textSize(24); text("Pop Tarts: " + score, width/2, height/2);
-text("Click to restart", width/2, height/2+50);
-textAlign(LEFT, TOP);
+text("Game Over!", width/2, height/2-100);
+textSize(24); text("Pop Tarts: " + score, width/2, height/2-50);
+text("Click to restart", width/2, height/2-20);
+textAlign(CENTER, CENTER);
 }
     </script>
 </body>
