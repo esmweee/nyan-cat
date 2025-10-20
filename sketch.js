@@ -1,5 +1,5 @@
 // variables
-treats
+
 let nyanCat;
 let objects = [];
 let gravity = 0.6;
