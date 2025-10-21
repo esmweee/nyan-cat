@@ -6,3 +6,4 @@ is to catch as many as possible!
 I made this project because it's something that I've been wanting to make ever since I signed up for 
 GWC but kept putting it off since I didn't know how to do it. I struggled a lot with learning how to
 generate random objects since I had never done it before, but random videos on Youtube helped me a lot!
+[![Athena Award Badge](https://img.shields.io/endpoint?url=https%3A%2F%2Faward.athena.hackclub.com%2Fapi%2Fbadge)](https://award.athena.hackclub.com?utm_source=readme)
