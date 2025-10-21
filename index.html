@@ -17,96 +17,211 @@ canvas { display: block; margin: 0 auto; }
     
 <!-- game code -->
 <script>
-let nyanCat, objects = [], gravity = 0.6, lift = -12, score = 0, gameOver = false;
+// variables
+
+let nyanCat;
+let objects = [];
+let gravity = 0.6;
+let lift = -12; 
+let score = 0;
+let gameOver = false;
+let gameStarted = false;
 let nyanCatImg, objectImg, backgroundImg;
 
+// preload everything
 function preload() {
+
 nyanCatImg = loadImage("assets/nyancatcher.gif");
 objectImg = loadImage("assets/poptart.png");
 backgroundImg = loadImage("assets/nyanbackground.png");
+
 }
 
+// setup (basically create canvas etc)
 function setup() {
 createCanvas(1500, 1000);
-// load font
+
 textFont('Pixelify Sans');
 
+// character (nyan cat)
+
 nyanCat = {
-x: -155, y: height / 2, velocity: 0, width: 460, height: 300,
-jump: function() { this.velocity = lift; }
+x: -50,
+y: height / 2,
+velocity: 0,
+width: 350,
+height: 240,
+jump: function() {
+this.velocity = lift;
+}
 };
+
+// generate incoming objects
 setInterval(generateObject, 1500);
 }
 
+// draw loop
 function draw() {
 background(backgroundImg);
-if(!gameOver) runGame();
-else drawGameOver();
+
+// game over condition 
+if(!gameStarted) {
+drawStartScreen();
+
+} else if (!gameOver) {
+runGame();
+
+} else {
+drawGameOver();
+}
 }
 
+// add function for start screen
+function drawStartScreen() {
+fill(255);
+textAlign(CENTER, CENTER);
+
+//text
+textSize(48);
+text("Nyan Cat Game ◕⩊◕ . ݁₊ ⊹ . ݁˖ . ݁ ", width/2, height/2 - 80);
+
+
+// add text for instruction on starting screen
+textSize(30);
+text("Click or press the space bar to fly ⊹ . ݁˖ .", width/2, height/2 + 30);
+text("Catch the pop tarts!", width/2, height/2 + 70);
+
+textSize(20);
+text("Click anywhere to begin ₍^. .^₎⟆", width/2, height/2 + 120);
+
+}
+
+// run the game
 function runGame() {
+
+// add gravity
 nyanCat.velocity += gravity;
 nyanCat.y += nyanCat.velocity;
-if (nyanCat.y > height) gameOver = true;
-if (nyanCat.y < 0) { nyanCat.y = 0; nyanCat.velocity = 0; }
-            
-image(nyanCatImg, nyanCat.x, nyanCat.y, nyanCat.width, nyanCat.height);
-updateObjects();
-checkCollisions();
-            
-fill(255); textSize(32); text("Pop tarts: " + score, 20, 40);
+
+//keep the player on screeen
+if (nyanCat.y > height) {
+gameOver = true;
+}
+if (nyanCat.y < 0) {
+nyanCat.y = 0;
+nyanCat.velocity = 0;
+
 }
 
+// draw player
+image(nyanCatImg, nyanCat.x, nyanCat.y, nyanCat.width, nyanCat.height);
+
+// objects
+updateObjects();
+checkCollisions();
+
+// draw score
+fill(255);
+textSize(32);
+text("Pop tarts: " + score, 20, 40);
+}
+
+// generate objects 
 function generateObject() {
-if (!gameOver) objects.push({
-x: width, y: random(100, height-100), width: 80, height: 80, speed: random(5,8)
+
+if (gameStarted && !gameOver)  {
+
+objects.push({
+x: width,
+y: random(100, height - 100),
+width: 70,
+height: 70,
+speed: random(11, 13)
 });
+}
 }
 
 function updateObjects() {
 for (let i = objects.length - 1; i >= 0; i--) {
 objects[i].x -= objects[i].speed;
+
+// draw object
 image(objectImg, objects[i].x, objects[i].y, objects[i].width, objects[i].height);
-if (objects[i].x < -50) objects.splice(i, 1);
+
+// remove objects that arent gathered
+if (objects[i].x < -50) {
+objects.splice(i, 1);
+}
 }
 }
 
+// check for collision
 function checkCollisions() {
 for (let i = objects.length - 1; i >= 0; i--) {
 if (isColliding(nyanCat, objects[i])) {
-score++; objects.splice(i, 1);
+score++;
+objects.splice(i, 1);
+
 }
 }
 }
 
-function isColliding(nyanCat, obj) {
-return nyanCat.x < obj.x + obj.width && nyanCat.x + nyanCat.width > obj.x &&
-nyanCat.y < obj.y + obj.height && nyanCat.y + nyanCat.height > obj.y;
+function isColliding(nyanCat, object) {
+return nyanCat.x < object.x + object.width &&
+nyanCat.x + nyanCat.width > object.x &&
+nyanCat.y < object.y + object.height &&
+nyanCat.y + nyanCat.height > object.y;
+
+
 }
 
+function startGame() {
+gameStarted = true;
+// generate objects
+setInterval(generateObject, 1500);
+}
+
+// check for mouse presing
 function mousePressed() {
-if (!gameOver) nyanCat.jump();
-else resetGame();
+if (!gameStarted) {
+    startGame();
+} else if (!gameOver) {
+    nyanCat.jump();
+} else {
+    resetGame();
+}
 }
 
+// check for keys pressing
 function keyPressed() {
-if (key === ' ' && !gameOver) nyanCat.jump();
+if (!gameStarted && key === '') {
+startGame();
+} else if (key === ' ' && !gameOver) {
+nyanCat.jump();
+}
 }
 
+// reset game
 function resetGame() {
-nyanCat.y = height/2; nyanCat.velocity = 0; objects = []; score = 0; gameOver = false;
- }
+nyanCat.y = height / 2;
+nyanCat.velocity = 0;
+objects = [];
+score = 0;
+gameOver = false;
+
+}
 
 function drawGameOver() {
 fill(255);
 textSize(40);
 textAlign(CENTER, CENTER);
-
-text("Game Over!", width/2, height/2-100);
-textSize(24); text("Pop Tarts: " + score, width/2, height/2-50);
-text("Click to restart", width/2, height/2-20);
-textAlign(LEFT, TOP);
+text("Game Over. Restart? ^_^", width / 2, height / 2 - 50);
+textSize(24);
+text("Pop Tarts: " + score, width / 2, height / 2);
+text("Click here to restart", width / 2, height / 2 + 50);
+textAlign(LEFT, TOP); 
 }
-    </script>
+
+</script>
 </body>
 </html>
